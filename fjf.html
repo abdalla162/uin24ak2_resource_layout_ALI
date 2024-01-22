@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            background-color: #666;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resource-list-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <nav id="category-menu">
+        <!-- Kategorier vil bli lagt til her via JavaScript -->
+    </nav>
+
+    <main>
+        <ul id="resource-list" class="resource-list">
+            <!-- Ressurser vil bli lagt til her via JavaScript -->
+        </ul>
+    </main>
+
+    <script>
+        const resources = {
+            technology: [
+                { title: 'MDN Web Docs', url: 'https://developer.mozilla.org/' },
+                { title: 'GitHub', url: 'https://github.com/' },
+                // ... andre teknologiresurser
+            ],
+            science: [
+                { title: 'National Geographic', url: 'https://www.nationalgeographic.com/' },
+                { title: 'NASA', url: 'https://www.nasa.gov/' },
+                // ... andre vitenskapsressurser
+            ],
+            design: [
+                { title: 'Behance', url: 'https://www.behance.net/' },
+                { title: 'Dribbble', url: 'https://dribbble.com/' },
+                // ... andre designressurser
+            ]
+        };
+
+        const categoryMenu = document.getElementById('category-menu');
+        const resourceList = document.getElementById('resource-list');
+
+        // Funksjon for å bytte kategori og oppdatere ressurslisten
+        function changeCategory(category) {
+            resourceList.innerHTML = ''; // Tøm listen
+
+            // Legg til ressursene for valgt kategori
+            resources[category].forEach(resource => {
+                const listItem = document.createElement('li');
+                listItem.className = 'resource-list-item';
+                listItem.textContent = resource.title;
+                listItem.onclick = () => window.location.href = resource.url; // Åpne URL ved klikk
+                resourceList.appendChild(listItem);
+            });
+        }
+
+        // Legg til kategorier i menyen
+        for (const category in resources) {
+            const categoryLink = document.createElement('a');
+            categoryLink.textContent = category;
+            categoryLink.href = '#';
+            categoryLink.onclick = () => changeCategory(category);
+            categoryMenu.appendChild(categoryLink);
+        }
+
+        // Initialiser med en standard kategori
+        const initialCategory = Object.keys(resources)[0];
+        changeCategory(initialCategory);
+    </script>
+
+</body>
+</html>

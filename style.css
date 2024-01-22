@@ -1,0 +1,42 @@
+html {
+    background-color: #58699D;
+    
+}
+
+body{
+    width: 1500px;
+    height: 500px;
+    background-color:#E1E5EE;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+}
+
+.center {
+    width: 65%;
+    margin: auto;
+    padding: 20px;
+}
+article{
+    font-family: "Roborto", sans-serif; 
+}
+button {
+    background-color: transparent;
+    border:none;
+    text-decoration: none;
+    color: #E1E5EE;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Monterrat", sans-serif; 
+}
+
+ul {
+    padding: 2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2A324B;
+    list-style-type: none;
+}
+
