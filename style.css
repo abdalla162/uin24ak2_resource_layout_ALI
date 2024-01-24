@@ -19,6 +19,8 @@ body{
 }
 article{
     font-family: "Roborto", sans-serif; 
+    max-width: 800px;
+    min-width: 100px;
 }
 button {
     background-color: transparent;

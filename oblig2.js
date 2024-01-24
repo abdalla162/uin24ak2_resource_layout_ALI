@@ -1,41 +1,41 @@
-let resourceHTML = ''; 
+//Opretter variabel med med navnet recource
+let resourceHTML = "";
 
-console.log(resourceHTML);
+// Lager en funksjon for å da oppdatere innholdet basert på kategori
+function updateContent(category, title) {
+    const resourceContent = document.getElementById("resourceContent");
+    const selectedResource = resources.find(resource => resource.category === category);
 
-resources.map(resource => resourceHTML += `<article>
-<img src="website_images/PROD_${resource.imagefile}" alt="${resource.title}" />
-<a href="#">${resource.category}</a>
-<h3>${resource.title}</h3>
-</article>`);
+    if (selectedResource) {
+        resourceContent.innerHTML = `
+            <h2>${selectedResource.category}</h2>
+            <p>${selectedResource.text}</p>
+        `;
+    }
+    
+}
 
+//Consol logger for å få innholdet på consoll
+console.log()
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM er lastet.");
+// Funksjon for knappetrykk
+function handleButtonClick(category) {
+    console.log(`Button clicked for category: ${category}`);
+    updateContent(category);
+}
 
-    // Koble til klikkhendelse for hver knapp
-    const buttons = document.querySelectorAll('button');
-    console.log("Antall knapper: " + buttons.length);
+// Vis innholdet for første kategori som standard
+if (resources.length > 0) {
+    updateContent(resources[0].category);
+}
 
-    buttons.forEach(button => {
-        console.log("Legger til hendelseslytter for knapp: " + button.textContent);
-        button.addEventListener('click', function (event) {
-            const category = event.target.textContent;
-            console.log("Klikket på knapp: " + category);
-            handleButtonClick(category);
-        });
-    });
+// Genererer da HTML for ressurslisten
+resources.forEach((resource) => {
+    resourceHTML += `
+        <li><a href="#"><button onclick="handleButtonClick('${resource.category}')">${resource.category}</button></a></li>
+    `;
 });
 
-function handleButtonClick(category) {
-    console.log("HandleButtonClick kalt for kategori: " + category);
-
-    const allCategories = document.querySelectorAll('.category-content');
-    allCategories.forEach(categoryElement => {
-        categoryElement.style.display = 'none';
-    });
-
-    const selectedCategory = document.getElementById(category);
-    if (selectedCategory) {
-        selectedCategory.style.display = 'block';
-    }
-}
+// Sette HTML for ressurslisten
+const resourceList = document.getElementById("resourceList");
+resourceList.innerHTML = resourceHTML;
