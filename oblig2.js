@@ -1,4 +1,4 @@
-let resourceHTML = ''; // Use let instead of const
+let resourceHTML = ''; 
 
 console.log(resourceHTML);
 

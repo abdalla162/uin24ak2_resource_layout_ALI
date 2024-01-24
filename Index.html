@@ -4,84 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbeidskrav2</title>
-    <link href="style.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
     <div class="center">
+        
         <nav>
             <ul id="resourceList">
-                <li><a href="#"><button onclick="handleButtonClick('HTML')">HTML</button></a></li>
-                <li><a href="#"><button onclick="handleButtonClick('CSS')">CSS</button></a></li>
-                <li><a href="#"><button onclick="handleButtonClick('JavaScript')">JavaScript</button></a></li>
-                <li><a href="#"><button onclick="handleButtonClick('React')">React</button></a></li>
-                <li><a href="#"><button onclick="handleButtonClick('Sanity')">Sanity and headless CMS</button></a></li>
             </ul>
         </nav>
+        <article id="resourceContent">
 
-<script src="ressurser.js"></script>
-<script src="oblig2.js"></script>
+        </article>
+        </div>
+        <script src="ressurser.js"></script>
+        <script src="oblig2.js"></script>
 
-<script>
-    function handleButtonClick(category) {
-        console.log("HandleButtonClick called for category: " + category);
-    
-        const allCategories = document.querySelectorAll('.category-content');
-        allCategories.forEach(categoryElement => {
-            categoryElement.style.display = 'none';
-        });
-    
-        const selectedCategory = document.getElementById(category);
-        console.log("Selected Category: ", selectedCategory);
-    
-        if (selectedCategory) {
-            selectedCategory.style.display = 'block';
-    
-            // Clear existing content
-            selectedCategory.innerHTML = '';
-    
-            // Find the corresponding resource based on category
-            const selectedResource = resources.find(resource => resource.category === category);
-            console.log("Selected Resource: ", selectedResource);
-    
-            if (selectedResource) {
-                // Create and append HTML content to the selected category
-                const article = document.createElement('article');
-                article.innerHTML = `
-                    <img src="website_images/PROD_${selectedResource.imagefile}" alt="${selectedResource.title}" />
-                    <a href="#" class="category-link" data-url="${selectedResource.sources[0].url}">${selectedResource.category}</a>
-                    <h3>${selectedResource.title}</h3>
-                `;
-                selectedCategory.appendChild(article);
-    
-                // Add sources
-                const sourcesDiv = document.createElement('div');
-                sourcesDiv.className = 'sources';
-                selectedResource.sources.forEach(source => {
-                    const sourceLink = document.createElement('a');
-                    sourceLink.href = source.url;
-                    sourceLink.target = '_blank';
-                    sourceLink.textContent = source.title;
-                    sourcesDiv.appendChild(sourceLink);
-                    const br = document.createElement('br');
-                    sourcesDiv.appendChild(br);
-                });
-                selectedCategory.appendChild(sourcesDiv);
-    
-                // Add event listener for the category link
-                const categoryLink = selectedCategory.querySelector('.category-link');
-                if (categoryLink) {
-                    categoryLink.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        window.open(categoryLink.getAttribute('data-url'), '_blank');
-                    });
-                }
-            }
-        }
-    }
-    
-</script>
-    </div>
 </body>
 </html>
 
