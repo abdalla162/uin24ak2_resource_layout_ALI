@@ -1,6 +1,6 @@
 body{
-    width: 1500px;
-    height: 500px;
+    width: 1400px;
+    height: 400px;
     background-color:#E1E5EE;
     display: flex;
     margin: 0;
@@ -14,7 +14,23 @@ article{
     background-color: #fff;
     padding: 3rem;
     position: relative;
+    box-sizing:  content-box;
 }
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-direction: row; 
+
+}
+
+nav li {
+    margin: 4.5px;
+}
+
 button {
     background-color: transparent;
     border:none;
@@ -27,16 +43,13 @@ button {
     margin: 10px;
     background-color: #2A324B;
 }
+
 button:active {
     background-color: #fff;
     color: #2A324B;
 
 }
 
-ul {
-    list-style-type: none;
-    display: flex;
-   
-}
+
 
 
